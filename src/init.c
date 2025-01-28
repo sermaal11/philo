@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sergio <sergio@student.42.fr>              +#+  +:+       +#+        */
+/*   By: smarin-a <smarin-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 13:41:59 by sergio            #+#    #+#             */
-/*   Updated: 2025/01/15 11:46:17 by sergio           ###   ########.fr       */
+/*   Updated: 2025/01/28 13:05:05 by smarin-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,13 @@ static void	ft_init_forks(pthread_mutex_t *forks, int total_philos)
 }
 
 static void	ft_init_philos(t_program *program, t_philo *philo,
-	pthread_mutex_t *forks)
+		pthread_mutex_t *forks)
 {
-	int	i;
+	int		i;
+	size_t	current_time;
 
 	i = -1;
+	current_time = ft_get_current_time();
 	while (++i < program->total_philos)
 	{
 		philo[i].id = i + 1;
@@ -56,13 +58,10 @@ static void	ft_init_philos(t_program *program, t_philo *philo,
 		philo[i].dead_lock = &program->dead_lock;
 		philo[i].meal_lock = &program->meal_lock;
 		philo[i].dead = &program->dead_flag;
-		philo[i].start_time = ft_get_current_time();
-		philo[i].last_meal = ft_get_current_time();
+		philo[i].start_time = current_time;
+		philo[i].last_meal = current_time;
 		philo[i].l_fork = &forks[i];
-		if (i == 0)
-			philo[i].r_fork = &forks[philo[i].total_philos - 1];
-		else
-			philo[i].r_fork = &forks[i -1];
+		philo[i].r_fork = &forks[(i + 1) % program->total_philos];
 	}
 }
 

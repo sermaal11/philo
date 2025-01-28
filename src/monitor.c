@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   monitor.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sergio <sergio@student.42.fr>              +#+  +:+       +#+        */
+/*   By: smarin-a <smarin-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 14:28:22 by sergio            #+#    #+#             */
-/*   Updated: 2025/01/15 14:35:02 by sergio           ###   ########.fr       */
+/*   Updated: 2025/01/28 13:09:46 by smarin-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void	*ft_monitor(void *pointer)
 
 	philo = (t_philo *)pointer;
 	while (1)
-		if (ft_check_if_dead(philo) == 1 || ft_check_if_all_ate(philo) == 1)
+		if (ft_check_if_all_ate(philo) == 1 || ft_check_if_dead(philo) == 1)
 			break ;
 	return (pointer);
 }

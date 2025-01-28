@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sergio <sergio@student.42.fr>              +#+  +:+       +#+        */
+/*   By: smarin-a <smarin-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 11:39:04 by sergio            #+#    #+#             */
-/*   Updated: 2025/01/15 14:35:40 by sergio           ###   ########.fr       */
+/*   Updated: 2025/01/16 14:59:33 by smarin-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,16 +32,13 @@ int	ft_mem_alloc(t_program *pgm, t_philo **philo, pthread_mutex_t **forks)
 	if (!*philo)
 	{
 		printf("Error: Failed to allocate memory in ('philo').\n");
-		free(*philo);
-		*philo = NULL;
 		return (1);
 	}
 	*forks = malloc(sizeof(pthread_mutex_t) * pgm->total_philos);
 	if (!*forks)
 	{
 		printf("Error: Failed to allocate memory in ('forks').\n");
-		free(*forks);
-		*forks = NULL;
+		free(*philo);
 		return (1);
 	}
 	return (0);
