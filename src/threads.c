@@ -6,7 +6,7 @@
 /*   By: smarin-a <smarin-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 11:38:17 by sergio            #+#    #+#             */
-/*   Updated: 2025/01/28 13:05:12 by smarin-a         ###   ########.fr       */
+/*   Updated: 2025/01/29 10:43:15 by smarin-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static void	*ft_philo_routine(void *pointer)
 
 	philo = (t_philo *)pointer;
 	if (philo->id % 2 == 0)
-		ft_usleep(1);
+		ft_usleep(philo->time_to_eat);
 	while (!ft_dead_loop(philo))
 	{
 		ft_eat(philo);
